@@ -19,16 +19,16 @@
                 <p class="acesse">Acesse</p>
                 <div class="login-form">
                     <label for="login" class="input-label">Login</label>
-                    <input type="text" id="login" class="input-field" placeholder="Digite seu login">
+                    <input type="text" id="login" class="input-field" placeholder="Digite seu login" [(ngModel)]="loginValue">
                     <label for="senha" class="input-label">Senha</label>
-                    <input type="password" id="senha" class="input-field" placeholder="Digite sua senha">
+                    <input type="password" id="senha" class="input-field" placeholder="Digite sua senha" [(ngModel)]="senhaValue">
                     <div class="forgot-password-wrapper">
                         <a class="forgot-password">Esqueceu a senha?</a>
                     </div>
-                    <button class="login-button">Login</button>
+                    <button class="login-button" (click)="login()">Login</button>
                     <div class="register-section">
                         <p class="no-account">Não tem uma conta?</p>
-                        <button class="register-button">Registrar</button>
+                        <button class="register-button" (click)="registrar()">Registrar</button>
                     </div>
                 </div>
             </form>

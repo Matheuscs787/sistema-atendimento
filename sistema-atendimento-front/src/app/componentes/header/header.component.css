@@ -1,0 +1,18 @@
+#logo{
+    padding-left: 30px;
+}
+
+#logo-mobile{
+    padding-top: 40px;    
+}
+
+#logo-text{
+    color: white;
+    font-size: large;
+}
+
+.transparent-button {
+    background-color: transparent;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+}
