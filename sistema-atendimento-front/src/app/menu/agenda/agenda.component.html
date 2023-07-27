@@ -1,3 +1,37 @@
 <app-header></app-header>
-<p>teste agenda</p>
+
+<div class="container">
+    <form class="col s12">
+        <div class="row">
+            <div id="data" class="input-field col s12 m2">
+                <p style="text-align: center;">Data</p>                  
+            </div>
+            <div  class="input-field col s12 m4">
+                <input type="text" id="nome" [(ngModel)]="data" placeholder="Digite a data">                  
+            </div>
+            <div class="col s12 m3 center" style="margin-top: 10px;">
+                <button class="btn waves-effect waves-light" type="submit" (click)="buscarConsultas()">Pesquisar</button>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 50px;">
+            <div id="agendamento" class="input-field col s12 m12">
+                <p style="text-align: center;">AGENDAMENTOS</p>                  
+            </div>
+        </div>
+        <div class="row">
+            <table class="striped">
+                <tbody>
+                  <tr *ngFor="let linha of linhas">
+                    <td>{{ linha.coluna1 }}</td>
+                    <td>{{ linha.coluna2 }}</td>
+                    <td>{{ linha.coluna3 }}</td>
+                    <td>{{ linha.coluna4 }}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </form>
+</div>
+  
+  
 <app-footer></app-footer>

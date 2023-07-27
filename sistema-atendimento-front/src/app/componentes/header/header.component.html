@@ -5,7 +5,7 @@
             <a routerLink='/agenda' data-target="mobile-demo" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
-            <ul class="right hide-on-med-and-down">
+            <ul id="opcoes" class="hide-on-med-and-down" style="padding-left: 350px;">
                 <li>
                     <a routerLink='/agenda' class="flow-text">Agenda</a>
                 </li>
@@ -14,14 +14,16 @@
                 </li>
                 <li>
                     <a routerLink='/procura' class="flow-text">Procura</a>
-                </li>
+                </li>                
+            </ul>    
+            <ul class="right hide-on-med-and-down">
                 <li style="padding-left: 150px;">
                     <input type="text" id="input-text" class="white" placeholder="  Buscar" style="height: 34px; margin-top: 17px; border-radius: 10px;" [(ngModel)]="buscarValue">                
                 </li>
                 <li style="padding-left: 3px; padding-right: 15px; border-radius: 10px;">
                     <button class="btn transparent-button" type="submit" (click)="buscar()">Buscar</button>
                 </li>
-            </ul>            
+            </ul>        
         </div>
     </nav>
 

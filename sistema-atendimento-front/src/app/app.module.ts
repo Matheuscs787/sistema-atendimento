@@ -12,6 +12,8 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { AgendaComponent } from './menu/agenda/agenda.component';
 import { CadastroComponent } from './menu/cadastro/cadastro.component';
 import { ProcuraComponent } from './menu/procura/procura.component';
+import { ListagemComponent } from './menu/prontuario/listagem/listagem.component';
+import { CadProntuarioComponent } from './menu/prontuario/cad-prontuario/cad-prontuario.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ProcuraComponent } from './menu/procura/procura.component';
     FooterComponent,
     AgendaComponent,
     CadastroComponent,
-    ProcuraComponent
+    ProcuraComponent,
+    ListagemComponent,
+    CadProntuarioComponent
   ],
   imports: [
     BrowserModule,

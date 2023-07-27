@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row" style="margin-top: 40px;">
+        <div class="input-field col s1">
+            <label for="data" style="background-color: #FDFF8C; color: black;">Data Nasc.</label>
+        </div>
+        <div class="input-field col s4">
+            <input id="data" type="date" [(ngModel)]="data" name="data" />                    
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="cpf" style="background-color: #FDFF8C; color: black;">CPF</label>
+        </div>
+        <div class="input-field col s4">
+            <input id="cpf" type="text" [(ngModel)]="cpf" name="cpf" />                
+        </div>
+    </div>
+    <div class="row" style="padding-bottom: 30px;">
+        <div class="input-field col s1">
+            <label for="nome" style="background-color: #FDFF8C; color: black;">Nome</label>
+        </div>
+        <div class="input-field col s11">
+            <input id="nome" type="text" [(ngModel)]="nome" name="nome" />                
+        </div>
+    </div> 
+
+    <div class="row" style="text-align: center; margin: 0px;">
+        <label class="col s2" for="nome" style="background-color: #C8C8C8; color: black; padding: 5px; border: 1px solid black;">Prontuário nº</label>
+        <label class="col s8" for="nome" style="background-color: #FDFF8C; color: black; border: 1px solid black; padding: 5px; text-align: center;">ASSUNTO</label>
+        <label class="col s1" for="nome" style="background-color: #C8C8C8; color: black; padding: 5px; border: 1px solid black;">01/01/2023</label>
+        <label class="col s1" for="nome" style="background-color: #C8C8C8; color: black; padding: 5px; border: 1px solid black;">14:30</label>
+    </div>
+    <div class="row" style="margin: 0px;">
+        <textarea style="height: 80px;"></textarea>
+    </div>
+    <div class="row" style="background-color: #FDFF8C; text-align: center; padding: 5px; margin: 0px; border: 1px solid black;">
+        <label for="nome" style="color: black;">ABORDAGEM</label>
+    </div>
+    <div class="row" style="margin: 0px;">
+        <textarea style="height: 80px;"></textarea>
+    </div>
+    <div class="row" style="background-color: #FDFF8C; text-align: center; padding: 5px; margin: 0px; border: 1px solid black;">
+        <label for="nome" style="color: black;">ORIENTAÇÃO</label>
+    </div>
+    <div class="row" style="margin: 0px;">
+        <textarea style="height: 80px;"></textarea>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+        <div class="right input-field col s1" style="margin-left: 25px;">
+            <button class="btn waves-effect waves-light" type="submit" style="background-color: #CFF4FC; color: #055160;">Fechar</button>                              
+        </div>
+        <div class="right input-field col s1" style="margin-left: 25px;">
+            <button class="btn waves-effect waves-light" type="submit" style="background-color: #FFF3CD; color: #664D03;">Editar</button>                                   
+        </div>
+        <div class="right input-field col s1" style="margin-left: 25px;">
+            <button class="btn waves-effect waves-light" type="submit" style="background-color: #F8D7DA; color: #842029;">Excluir</button>             
+        </div>
+        <div class="right input-field col s1" style="margin-left: 25px;">
+            <button class="btn waves-effect waves-light" type="submit" style="background-color: #D1E7DD; color: #146C43;">Salvar</button>              
+        </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>

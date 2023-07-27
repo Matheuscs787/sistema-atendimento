@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row" style="margin-top: 40px;">
+        <div class="input-field col s1">
+            <label for="data" style="background-color: #FDFF8C; color: black;">Data Nasc.</label>
+        </div>
+        <div class="input-field col s4">
+            <input id="data" type="date" [(ngModel)]="data" name="data" />                    
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="cpf" style="background-color: #FDFF8C; color: black;">CPF</label>
+        </div>
+        <div class="input-field col s4">
+            <input id="cpf" type="text" [(ngModel)]="cpf" name="cpf" />                
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="nome" style="background-color: #FDFF8C; color: black;">Nome</label>
+        </div>
+        <div class="input-field col s11">
+            <input id="nome" type="text" [(ngModel)]="nome" name="nome" />                
+        </div>
+    </div> 
+
+    <div class="row" style="padding-top: 100px;">
+        <table class="striped bordered-table">
+            <thead>
+                <tr>
+                  <th style="background-color: #C8C8C8; text-align: center;">DATA</th>
+                  <th style="background-color: #C8C8C8; text-align: center">ASSUNTO</th>
+                  <th style="background-color: #C8C8C8; text-align: center">ABORDAGEM</th>
+                  <th style="background-color: #C8C8C8; text-align: center">ORIENTAÇÃO</th>
+                </tr>
+              </thead>
+            <tbody>
+              <tr *ngFor="let linha of linhas" (click)="onRowClick(linha)">
+                <td class="highlighted-row" style="text-align: center;">{{ linha.coluna1 }}</td>
+                <td class="row-nome" style="text-align: center;">{{ linha.coluna2 }}</td>
+                <td class="highlighted-row" style="text-align: center;">{{ linha.coluna3 }}</td>
+                <td style="text-align: center;">{{ linha.coluna4 }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <div class="row right" style="margin-top: 50px;">
+        <div class="right input-field col s1" style="margin-right: 70px;">
+            <button class="btn waves-effect waves-light" type="submit" style="background-color: #CFF4FC; color: #055160;" (click)="fechar()">Fechar</button>                              
+        </div>
+        <div class="right input-field col s1" style="margin-right: 70px;">
+            <button class="btn waves-effect waves-light" type="submit" style="background-color: #D1E7DD; color: #146C43;" (click)="novo()">Novo</button>                              
+        </div>       
+    </div>  
+</div>
+
+<app-footer></app-footer>
