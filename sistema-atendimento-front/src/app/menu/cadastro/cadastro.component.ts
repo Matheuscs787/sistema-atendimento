@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
-export class CadastroComponent {
+export class CadastroComponent{
   codigo: string = '';
   data: string = '';
   nome: string = '';
@@ -35,6 +35,10 @@ export class CadastroComponent {
   }
 
   prontuarios(){
-    this.router.navigate(['/prontuarios']);
+    if (this.codigo) {
+      this.router.navigate(['/prontuarios', this.codigo]);
+    } else {
+      alert('Só é possível abrir prontuários de pacientes cadastrados!');
+    }
   }
 }

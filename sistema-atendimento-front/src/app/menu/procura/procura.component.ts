@@ -1,37 +1,41 @@
-import { Component } from '@angular/core';
+import { BuscaInfoComponent } from './busca-info/busca-info.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-procura',
   templateUrl: './procura.component.html',
   styleUrls: ['./procura.component.css']
 })
-export class ProcuraComponent {
+
+export class ProcuraComponent implements OnInit {
   data: string = '';
   nome: string = '';
   cpf: string = '';
-  
+  exibirResultado: boolean = false;
+  dadosFiltrados: any[] = [];
+
+  @ViewChild(BuscaInfoComponent) buscaInfoComponent!: BuscaInfoComponent;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.cpf = params['cpf'];
+    })
+  }
+
   ngAfterViewInit() {
     const selectElems = document.querySelectorAll('select');
     M.FormSelect.init(selectElems);
   }
 
-  submitForm() {
-    console.log('Formulário enviado:', this);
+  buscarDados() {
+    this.exibirResultado = true;
+    this.buscaInfoComponent.buscarDados();
+    this.buscaInfoComponent.dadosFiltrados.subscribe((dados: any[]) => {
+      this.dadosFiltrados = dados;
+    });
   }
-
-  buscarConsultas() {
-    console.log('Formulário enviado:');
-    console.log('Data:', this.data);
-    console.log('Nome:', this.nome);
-    console.log('cpf:', this.cpf);
-  }
-
-  linhas = [
-    { coluna1: 'Nome:', coluna2: '', coluna3: 'CPF:', coluna4: '' },
-    { coluna1: 'Nome:', coluna2: '', coluna3: 'CPF:', coluna4: '' },
-    { coluna1: 'Nome:', coluna2: '', coluna3: 'CPF:', coluna4: '' },
-    { coluna1: 'Nome:', coluna2: '', coluna3: 'CPF:', coluna4: '' },
-    { coluna1: 'Nome:', coluna2: '', coluna3: 'CPF:', coluna4: '' },
-  ];
 
 }

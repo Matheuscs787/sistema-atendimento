@@ -14,8 +14,19 @@ button {
     color: black;
 }
 
-#agendamento{
-    background-color: #C8C8C8;
+.row-nome {
+    width: 520px;
+}
+
+.bordered-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.bordered-table td,
+.bordered-table th {
+    border: 1px solid black;
+    padding: 8px;
 }
 
 .highlighted-row {
@@ -23,16 +34,20 @@ button {
     width: 60px;
 }
 
-.row-nome {
-width: 520px;
+#agendamento {
+    background-color: #C8C8C8;
 }
 
-.bordered-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
 
-  .bordered-table td, .bordered-table th {
-    border: 1px solid black;
-    padding: 8px; 
-  }
+.row {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.col {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+

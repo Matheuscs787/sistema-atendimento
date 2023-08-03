@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './listagem.component.html',
   styleUrls: ['./listagem.component.css']
 })
-export class ListagemComponent {
+export class ListagemComponent{
 
+  codigo: string = '';
   data: string = '';
   nome: string = '';
   cpf: string = '';

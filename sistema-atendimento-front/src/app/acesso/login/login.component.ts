@@ -1,4 +1,4 @@
-import { Component  } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,15 +7,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginValue: string = '';
-  senhaValue: string = '';
+  login: string = '';
+  senha: string = '';
+  usuarios: any[] = [
+    { login: 'user', senha: 'pass' },
+    { login: 'matheus', senha: 'senha' }
+  ];
 
-  constructor(private router: Router){}
-
-  login(){
-    this.router.navigate(['/agenda']);
+  constructor(private router: Router) {
   }
-  registrar(){
+
+  acessar() {
+    const usuarioEncontrado = this.usuarios.find(usuario =>
+      usuario.login === this.login && usuario.senha === this.senha
+    );
+    if (usuarioEncontrado) {
+      this.router.navigate(['/agenda']);
+    } else {
+      alert('Usuário ou senha inválidos!');
+    }
+  }
+  registrar() {
     this.router.navigate(['/registrar'])
   }
+
+
 }

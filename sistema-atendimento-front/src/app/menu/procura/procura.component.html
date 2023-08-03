@@ -1,60 +1,59 @@
 <app-header></app-header>
 
 <div class="container">
-    <h5 style="text-align: center; margin-top: 30px; margin-bottom: 50px; font-weight: bold;">Busca de atendimento por data de atendimento, CPF ou nome</h5>
-    <form (ngSubmit)="submitForm()" class="col s12">
-        <div class="row">
-            <div class="input-field col s1">
-                <label for="data" style="background-color: #FDFF8C; color: black;">Data</label>
-            </div>
-            <div class="input-field col s4">
-                <input id="data" type="date" [(ngModel)]="data" name="data" />                    
-            </div>
+    <h5 style="text-align: center; margin-top: 30px; margin-bottom: 50px; font-weight: bold;">Busca de atendimento por
+        data de atendimento, CPF ou nome</h5>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="data" style="background-color: #FDFF8C; color: black;">Data</label>
         </div>
-        <div class="row">
-            <div class="input-field col s1">
-                <label for="cpf" style="background-color: #FDFF8C; color: black;">CPF</label>
-            </div>
-            <div class="input-field col s4">
-                <input id="cpf" type="text" [(ngModel)]="cpf" name="cpf" />                
-            </div>
+        <div class="input-field col s4">
+            <input id="data" type="date" [(ngModel)]="data" name="data" />
         </div>
-        <div class="row">
-            <div class="input-field col s1">
-                <label for="nome" style="background-color: #FDFF8C; color: black;">Nome</label>
-            </div>
-            <div class="input-field col s11">
-                <input id="nome" type="text" [(ngModel)]="nome" name="nome" />                
-            </div>
-        </div>        
-        <div class="row" style="margin-top: 30px;">
-            <div class="col s12 m12 right-align">
-                <button class="btn waves-effect waves-light" type="submit" (click)="buscarConsultas()">Pesquisar</button>
-            </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="cpf" style="background-color: #FDFF8C; color: black;">CPF</label>
         </div>
+        <div class="input-field col s4">
+            <input id="cpf" type="text" [(ngModel)]="cpf" name="cpf" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="nome" style="background-color: #FDFF8C; color: black;">Nome</label>
+        </div>
+        <div class="input-field col s11">
+            <input id="nome" type="text" [(ngModel)]="nome" name="nome" />
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col s12 m12 right-align">
+            <app-busca-info [cpf]="cpf" [nome]="nome" (dadosFiltrados)="dadosFiltrados = $event"></app-busca-info>
+            <button class="btn waves-effect waves-light" type="submit" (click)="buscarDados()">Pesquisar</button>
+        </div>
+    </div>
 
+    <div *ngIf="exibirResultado">
         <div class="row" style="margin-top: 50px;">
             <div id="agendamento" class="input-field col s12 m12">
-                <p style="text-align: center;">RESULTADO</p>                  
+                <p style="text-align: center;">RESULTADO</p>
             </div>
         </div>
 
         <div class="row">
             <table class="striped bordered-table">
                 <tbody>
-                  <tr *ngFor="let linha of linhas">
-                    <td class="highlighted-row">{{ linha.coluna1 }}</td>
-                    <td class="row-nome">{{ linha.coluna2 }}</td>
-                    <td class="highlighted-row">{{ linha.coluna3 }}</td>
-                    <td>{{ linha.coluna4 }}</td>
-                  </tr>
+                    <tr *ngFor="let linha of dadosFiltrados">
+                        <td class="highlighted-row">{{ linha.coluna1 }}</td>
+                        <td class="row-nome">{{ linha.coluna2 }}</td>
+                        <td class="highlighted-row">{{ linha.coluna3 }}</td>
+                        <td>{{ linha.coluna4 }}</td>
+                    </tr>
                 </tbody>
-              </table>
+            </table>
         </div>
-        <div class="row right" style="margin-top: 50px;">
-            <button class="btn waves-effect waves-light" type="submit" style="background-color: #D1E7DD; color: #146C43;">Novo</button> 
-        </div>        
-    </form>
+    </div>
 </div>
 
 <app-footer></app-footer>

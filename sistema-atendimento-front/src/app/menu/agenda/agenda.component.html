@@ -7,9 +7,10 @@
                 <p style="text-align: center;">Data</p>                  
             </div>
             <div  class="input-field col s12 m4">
-                <input type="text" id="nome" [(ngModel)]="data" placeholder="Digite a data">                  
+                <input type="date" id="nome" [(ngModel)]="data" name="data" placeholder="Digite a data">                  
             </div>
             <div class="col s12 m3 center" style="margin-top: 10px;">
+                <app-busca-agendamentos [data]="data" (dadosFiltrados)="dadosFiltrados = $event"></app-busca-agendamentos>
                 <button class="btn waves-effect waves-light" type="submit" (click)="buscarConsultas()">Pesquisar</button>
             </div>
         </div>
@@ -21,7 +22,7 @@
         <div class="row">
             <table class="striped">
                 <tbody>
-                  <tr *ngFor="let linha of linhas">
+                  <tr *ngFor="let linha of dadosFiltrados">
                     <td>{{ linha.coluna1 }}</td>
                     <td>{{ linha.coluna2 }}</td>
                     <td>{{ linha.coluna3 }}</td>

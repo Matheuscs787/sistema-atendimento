@@ -22,6 +22,7 @@ export class HeaderComponent implements AfterViewInit{
   }
 
   buscar(){
-    this.router.navigate(['/procura'])
+    const cpfSemFormatacao = this.buscarValue.replace(/[^\d]/g, '');
+    this.router.navigate(['/procura'], {queryParams: {cpf: cpfSemFormatacao}});
   }
 }

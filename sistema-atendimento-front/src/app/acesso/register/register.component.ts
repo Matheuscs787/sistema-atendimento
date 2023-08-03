@@ -10,7 +10,7 @@ export class RegisterComponent {
   constructor(private router: Router){}
 
   login(){
-    this.router.navigate(['/agenda']);
+    this.router.navigate(['/login']);
   }
 
   acessar(){

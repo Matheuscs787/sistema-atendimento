@@ -14,6 +14,10 @@ import { CadastroComponent } from './menu/cadastro/cadastro.component';
 import { ProcuraComponent } from './menu/procura/procura.component';
 import { ListagemComponent } from './menu/prontuario/listagem/listagem.component';
 import { CadProntuarioComponent } from './menu/prontuario/cad-prontuario/cad-prontuario.component';
+import { NotfoundComponent } from './componentes/notfound/notfound.component';
+import { BuscaInfoComponent } from './menu/procura/busca-info/busca-info.component';
+import { BuscaAgendamentosComponent } from './menu/agenda/busca-agendamentos/busca-agendamentos.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { CadProntuarioComponent } from './menu/prontuario/cad-prontuario/cad-pro
     CadastroComponent,
     ProcuraComponent,
     ListagemComponent,
-    CadProntuarioComponent
+    CadProntuarioComponent,
+    NotfoundComponent,
+    BuscaInfoComponent,
+    BuscaAgendamentosComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,7 @@ import { CadProntuarioComponent } from './menu/prontuario/cad-prontuario/cad-pro
     FormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
