@@ -18,6 +18,7 @@ import { NotfoundComponent } from './componentes/notfound/notfound.component';
 import { BuscaInfoComponent } from './menu/procura/busca-info/busca-info.component';
 import { BuscaAgendamentosComponent } from './menu/agenda/busca-agendamentos/busca-agendamentos.component';
 import { DatePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DatePipe } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

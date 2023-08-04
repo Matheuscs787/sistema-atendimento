@@ -29,7 +29,7 @@
     </div>
     <div class="row" style="margin-top: 30px;">
         <div class="col s12 m12 right-align">
-            <app-busca-info [cpf]="cpf" [nome]="nome" (dadosFiltrados)="dadosFiltrados = $event"></app-busca-info>
+            <app-busca-info [cpf]="cpf" [nome]="nome" [data]="data" (dadosFiltrados)="dadosFiltrados = $event"></app-busca-info>
             <button class="btn waves-effect waves-light" type="submit" (click)="buscarDados()">Pesquisar</button>
         </div>
     </div>
@@ -43,16 +43,23 @@
 
         <div class="row">
             <table class="striped bordered-table">
-                <tbody>
-                    <tr *ngFor="let linha of dadosFiltrados">
-                        <td class="highlighted-row">{{ linha.coluna1 }}</td>
-                        <td class="row-nome">{{ linha.coluna2 }}</td>
-                        <td class="highlighted-row">{{ linha.coluna3 }}</td>
-                        <td>{{ linha.coluna4 }}</td>
-                    </tr>
-                </tbody>
+              <tbody>
+                <ng-container *ngIf="dadosFiltrados.length > 0; else noData">
+                  <tr *ngFor="let linha of dadosFiltrados">
+                    <td class="highlighted-row">NOME: </td>
+                    <td class="row-nome">{{ linha.nome }}</td>
+                    <td class="highlighted-row">CPF: </td>
+                    <td>{{ linha.cpf }}</td>
+                  </tr>
+                </ng-container>
+                <ng-template #noData>
+                  <tr>
+                    <td colspan="4" style="text-align: center;">Nenhum dado encontrado</td>
+                  </tr>
+                </ng-template>
+              </tbody>
             </table>
-        </div>
+          </div>
     </div>
 </div>
 

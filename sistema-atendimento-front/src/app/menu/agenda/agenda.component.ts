@@ -35,7 +35,6 @@ export class AgendaComponent implements AfterViewInit {
   }
 
   buscarConsultas() {
-    console.log('oi');
     this.buscaAgendamentosComponent.buscaDados();
     this.buscaAgendamentosComponent.dadosFiltrados.subscribe((dados: any[]) => {
       this.dadosFiltrados = dados;

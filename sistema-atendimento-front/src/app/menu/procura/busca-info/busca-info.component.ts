@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-busca-info',
@@ -7,34 +8,46 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class BuscaInfoComponent {
 
-  @Input() cpf: string = '';
   @Input() data: string = '';
+  @Input() cpf: string = '';  
   @Input() nome: string = '';
   @Output() dadosFiltrados = new EventEmitter<any[]>();
 
-  linhas: any[] = [
-    { coluna1: 'Nome:', coluna2: 'm', coluna3: 'CPF:', coluna4: '0' },
-    { coluna1: 'Nome:', coluna2: 'Carlos', coluna3: 'CPF:', coluna4: '11111111111' },
-    { coluna1: 'Nome:', coluna2: 'Igor', coluna3: 'CPF:', coluna4: '22222222222' },
-    { coluna1: 'Nome:', coluna2: 'Rafael', coluna3: 'CPF:', coluna4: '33333333333' },
-    { coluna1: 'Nome:', coluna2: 'm', coluna3: 'CPF:', coluna4: '1' },
-  ];
+  constructor(private http: HttpClient) { }
 
-  buscarDados() {
-    let dadosFiltrados = this.linhas;
+  buscarDados() { 
+    let queryParams = '';
 
-    if (this.cpf.trim() !== '' && this.nome.trim() !== '') {
-      dadosFiltrados = dadosFiltrados.filter(linha => 
-        linha.coluna2.includes(this.nome) && linha.coluna4 === this.cpf
-      );
-    } else if (this.cpf.trim() !== '') {
-      dadosFiltrados = dadosFiltrados.filter(linha => linha.coluna4 === this.cpf);
-    } else if (this.nome.trim() !== '') {
-      dadosFiltrados = dadosFiltrados.filter(linha => linha.coluna2.includes(this.nome));
-    } else {
-      dadosFiltrados = [];
+    if (this.cpf.trim() !== '') {
+      queryParams += `cpf=${this.cpf.trim()}&`;
     }
-    this.dadosFiltrados.emit(dadosFiltrados);
+
+    if (this.nome.trim() !== '') {
+      queryParams += `nome=${this.nome.trim()}&`;
+    }
+
+    if (this.data) {
+      queryParams += `data=${this.data}&`;
+    }
+
+    if (queryParams.length === 0) {
+      this.dadosFiltrados.emit([]);
+      return;
+    }
+
+    queryParams = queryParams.slice(0, -1);
+
+    const url = `http://localhost:3000/atendimentos?${queryParams}`;
+
+    this.http.get<any[]>(url).subscribe(
+      (response: any[]) => {
+        this.dadosFiltrados.emit(response);
+      },
+      (error) => {
+        console.error('Erro ao fazer a busca:', error);
+        this.dadosFiltrados.emit([]);
+      }
+    );
   }
 
 }

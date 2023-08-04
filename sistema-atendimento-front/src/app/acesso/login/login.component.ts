@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -9,27 +10,30 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   login: string = '';
   senha: string = '';
-  usuarios: any[] = [
-    { login: 'user', senha: 'pass' },
-    { login: 'matheus', senha: 'senha' }
-  ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
   }
 
   acessar() {
-    const usuarioEncontrado = this.usuarios.find(usuario =>
-      usuario.login === this.login && usuario.senha === this.senha
+
+    const url = `http://localhost:3000/usuarios?login=${this.login}&senha=${this.senha}`;
+
+    this.http.get(url).subscribe(
+      (response: any) => {
+        if (Array.isArray(response) && response.length > 0) {
+          this.router.navigate(['/agenda']);
+        } else {
+          alert('Usuário não encontrado. Verifique suas credenciais.');
+        }
+      },
+      (error) => {
+        alert('Erro ao fazer login');
+      }
     );
-    if (usuarioEncontrado) {
-      this.router.navigate(['/agenda']);
-    } else {
-      alert('Usuário ou senha inválidos!');
-    }
   }
+
   registrar() {
     this.router.navigate(['/registrar'])
   }
-
 
 }
