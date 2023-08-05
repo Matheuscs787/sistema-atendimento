@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-busca-agendamentos',
@@ -10,71 +10,53 @@ export class BuscaAgendamentosComponent {
   @Input() data: string = '';
   @Output() dadosFiltrados = new EventEmitter<any[]>();
 
-  constructor(private datePipe: DatePipe) { }
-
-  linhas = [
-    { coluna1: '01/01/2023', coluna2: '09:00', coluna3: 'Matheus Souza', coluna4: '000.000.000-00' },
-    { coluna1: '01/01/2023', coluna2: '10:00', coluna3: 'Matheus Souza', coluna4: '000.000.000-00' },
-    { coluna1: '01/01/2023', coluna2: '11:00', coluna3: '', coluna4: '' },
-    { coluna1: '01/01/2023', coluna2: '13:00', coluna3: 'Matheus Souza', coluna4: '000.000.000-00' },
-    { coluna1: '01/01/2023', coluna2: '14:00', coluna3: 'Matheus Souza', coluna4: '000.000.000-00' },
-    { coluna1: '01/01/2023', coluna2: '15:00', coluna3: 'Matheus Souza', coluna4: '000.000.000-00' },
-    { coluna1: '01/01/2023', coluna2: '16:00', coluna3: '', coluna4: '' },
-    { coluna1: '01/01/2023', coluna2: '17:00', coluna3: 'Matheus Souza', coluna4: '000.000.000-00' },
-    { coluna1: '02/01/2023', coluna2: '09:00', coluna3: 'Carlos Souza', coluna4: '100.000.000-00' },
-    { coluna1: '02/01/2023', coluna2: '10:00', coluna3: 'Carlos Souza', coluna4: '100.000.000-00' },
-    { coluna1: '02/01/2023', coluna2: '11:00', coluna3: '', coluna4: '' },
-    { coluna1: '02/01/2023', coluna2: '13:00', coluna3: 'Carlos Souza', coluna4: '100.000.000-00' },
-    { coluna1: '02/01/2023', coluna2: '14:00', coluna3: 'Carlos Souza', coluna4: '100.000.000-00' },
-    { coluna1: '02/01/2023', coluna2: '15:00', coluna3: 'Carlos Souza', coluna4: '100.000.000-00' },
-    { coluna1: '02/01/2023', coluna2: '16:00', coluna3: '', coluna4: '' },
-    { coluna1: '02/01/2023', coluna2: '17:00', coluna3: 'Carlos Souza', coluna4: '100.000.000-00' },
-  ];
+  constructor(private http: HttpClient) {}
 
   padrao: any[] = [];
 
-
   buscaDados() {
-    let dadosFiltrados = this.linhas;
+    let queryParams = '';
 
-    if (this.data !== null && this.data.trim() !== '') {
-      const dataFormatada = this.formatarData(this.data);
-      dadosFiltrados = dadosFiltrados.filter(linha =>
-        linha.coluna1.includes(dataFormatada)
-      );
-    } else {
-      dadosFiltrados = [];
+    if (this.data) {
+      queryParams += `data=${this.data}&`;
     }
 
-    if (dadosFiltrados.length === 0) {
-      const dataFormatada = this.formatarData(this.data);
-      this.padrao = [
-        { coluna1: dataFormatada, coluna2: '09:00', coluna3: '', coluna4: '' },
-        { coluna1: dataFormatada, coluna2: '10:00', coluna3: '', coluna4: '' },
-        { coluna1: dataFormatada, coluna2: '11:00', coluna3: '', coluna4: '' },
-        { coluna1: dataFormatada, coluna2: '13:00', coluna3: '', coluna4: '' },
-        { coluna1: dataFormatada, coluna2: '14:00', coluna3: '', coluna4: '' },
-        { coluna1: dataFormatada, coluna2: '15:00', coluna3: '', coluna4: '' },
-        { coluna1: dataFormatada, coluna2: '16:00', coluna3: '', coluna4: '' },
-        { coluna1: dataFormatada, coluna2: '17:00', coluna3: '', coluna4: '' },
-      ]
-      dadosFiltrados = dadosFiltrados.concat(this.padrao);
-    } else {
-      this.padrao = [];
+    if (queryParams.length === 0) {
+      this.dadosFiltrados.emit([]);
+      return;
     }
 
-    this.dadosFiltrados.emit(dadosFiltrados);
+    queryParams = queryParams.slice(0, -1);
 
-  }
+    const url = `http://localhost:3000/atendimentos?${queryParams}`;
 
-  formatarData(data: string | null): string {
-    if (data) {
-      const parts = data.split('-');
-      if (parts.length === 3) {
-        return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    console.log(url);
+
+    this.http.get<any[]>(url).subscribe(
+      (response: any[]) => {
+        const isEmptyResponse = Object.keys(response).length === 0;
+        if (isEmptyResponse) {
+          this.padrao = [
+            { data: this.data, horario: '09:00', nome: '', cpf: '' },
+            { data: this.data, horario: '10:00', nome: '', cpf: '' },
+            { data: this.data, horario: '11:00', nome: '', cpf: '' },
+            { data: this.data, horario: '13:00', nome: '', cpf: '' },
+            { data: this.data, horario: '14:00', nome: '', cpf: '' },
+            { data: this.data, horario: '15:00', nome: '', cpf: '' },
+            { data: this.data, horario: '16:00', nome: '', cpf: '' },
+            { data: this.data, horario: '17:00', nome: '', cpf: '' },
+          ]
+          this.dadosFiltrados.emit(this.padrao);
+        } else {
+          this.dadosFiltrados.emit(response);
+        }
+      },
+      (error) => {
+        console.error('Erro ao fazer a busca:', error);
+        this.dadosFiltrados.emit([]);
       }
-    }
-    return '';
+    );
+
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, AfterViewInit , ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { BuscaAgendamentosComponent } from './busca-agendamentos/busca-agendamentos.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-agenda',
@@ -11,11 +12,11 @@ export class AgendaComponent implements AfterViewInit {
   email: string = '';
   mensagem: string = '';
   dadosFiltrados: any[] = [];
-
+  
   @ViewChild(BuscaAgendamentosComponent) buscaAgendamentosComponent!: BuscaAgendamentosComponent;
 
-  constructor() {
-    this.data = this.getDataAtual();
+  constructor(private datePipe: DatePipe) {
+    this.data = this.getDataAtual();    
   }
 
   ngAfterViewInit(): void {
