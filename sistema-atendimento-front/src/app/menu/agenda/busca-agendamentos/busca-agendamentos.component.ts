@@ -30,8 +30,6 @@ export class BuscaAgendamentosComponent {
 
     const url = `http://localhost:3000/atendimentos?${queryParams}`;
 
-    console.log(url);
-
     this.http.get<any[]>(url).subscribe(
       (response: any[]) => {
         const isEmptyResponse = Object.keys(response).length === 0;
