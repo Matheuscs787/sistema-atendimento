@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confessionário</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form-tela">
+            <img src="../../../assets/icon/church.png" alt="Ícone" class="icon-church">
+            <div class="logo">
+                <div class="icon-bar"></div>
+                <p class="logo-nome">Confessionário</p>
+                <div class="icon-bar"></div>
+            </div>
+            <form class="form-login">
+                <p class="bem-vindo">Bem vindo!</p>
+                <p class="acesse">Crie sua conta</p>
+                <div class="login-form">
+                    <label for="name" class="input-label">Nome</label>
+                    <input type="text" id="nome" class="input-field" placeholder="Digite seu nome"  [(ngModel)]="nome" name="nome" style="width: 300px;">
+                    <label for="login" class="input-label">Login</label>
+                    <input type="text" id="login" class="input-field" placeholder="Digite seu login" [(ngModel)]="login" name="login" style="width: 300px;">
+                    <label for="senha" class="input-label">Senha</label>
+                    <input type="password" id="senha" class="input-field" placeholder="Digite sua senha" [(ngModel)]="senha" name="senha" style="width: 300px;">
+                    <label for="senhac" class="input-label">Senha</label>
+                    <input type="password" id="senhac" class="input-field" placeholder="Digite sua senha" [(ngModel)]="senhac" name="senhac" style="width: 300px;">
+                    
+                    <button class="login-button" (click)="criar()" style="width: 300px;">Login</button>
+                    <div class="register-section" style="width: 300px;">
+                        <p class="yes-account">Já tem uma conta?</p>
+                        <button class="access-button" (click)="acessar()">Acesse</button>
+                    </div>
+                </div>
+            </form>
+        </form>
+        <div class="logo-church">
+            <img src="../../../assets/icon/logo.jpg" alt="Ícone" class="icon-logo">
+        </div>
+    </div>
+</body>
+</html>

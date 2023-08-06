@@ -1,0 +1,41 @@
+#data{
+    background-color: #FDFF8C;
+    height: 65px;    
+}
+
+#agendamento{
+    background-color: #C8C8C8;
+}
+
+.container {
+    padding: 20px;
+  }
+  
+  input[type="text"] {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  label {
+    font-size: 14px;
+  }
+  
+  button {
+    margin-top: 10px;
+    background-color: #C8C8C8;
+  }
+  
+  table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }

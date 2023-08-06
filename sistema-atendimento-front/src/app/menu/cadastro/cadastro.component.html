@@ -1,0 +1,150 @@
+<app-header></app-header>
+
+<div class="container">
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()" class="col s12">
+        <div class="row" style="margin-top: 0px; margin-bottom: 50px;">
+            <div class="input-field col s1">
+                <label for="codigo" style="background-color: #C8C8C8; color: black;">CADASTRO</label>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="id" style="background-color: #FDFF8C; color: black;">Código</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="id" type="text" formControlName="id" name="id" />
+            </div>
+            <div class="input-field col s1">
+                <label for="data" style="background-color: #FDFF8C; color: black;">Data cad.</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="dataCadastro" type="date" formControlName="dataCadastro" name="dataCadastro" [disabled]="true" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="nome" style="background-color: #FDFF8C; color: black;">Nome</label>
+            </div>
+            <div class="input-field col s11">
+                <input id="nome" type="text" formControlName="nome" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s2">
+                <label for="nascimento" style="background-color: #FDFF8C; color: black;">Data de Nascimento</label>
+            </div>
+            <div class="input-field col s3">
+                <input id="nascimento" type="date" formControlName="nascimento" name="nascimento" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="cpf" style="background-color: #FDFF8C; color: black;">CPF</label>
+            </div>
+            <div class="input-field col s11">
+                <input id="cpf" type="text" formControlName="cpf" name="cpf" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s2">
+                <label for="estadoCivil" style="background-color: #FDFF8C; color: black;">Estado Civil</label>
+            </div>
+            <div class="input-field col s3">
+                <select formControlName="estadoCivil" name="estadoCivil">
+                    <option value="" disabled selected>Selecione o estado civil</option>
+                    <option value="solteiro">Solteiro</option>
+                    <option value="casado">Casado</option>
+                    <option value="divorciado">Divorciado</option>
+                    <option value="viuvo">Viúvo</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="telefone" style="background-color: #FDFF8C; color: black;">Telefone</label>
+            </div>
+            <div class="input-field col s5">
+                <input id="telefone" type="text" formControlName="telefone" name="telefone" />
+            </div>
+            <div class="input-field col s1"></div>
+            <div class="input-field col s5">
+                <input id="telefone1" type="text" formControlName="telefone1" name="telefone1" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="cep" style="background-color: #FDFF8C; color: black;">CEP</label>
+            </div>
+            <div class="input-field col s11">
+                <input id="cep" type="text" formControlName="cep" name="cep" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="cidade" style="background-color: #FDFF8C; color: black;">Cidade</label>
+            </div>
+            <div class="input-field col s8">
+                <input id="cidade" type="text" formControlName="cidade" name="cidade" />
+            </div>
+            <div class="input-field col s1">
+                <label for="uf" style="background-color: #FDFF8C; color: black;">UF</label>
+            </div>
+            <div class="input-field col s2">
+                <input id="uf" type="text" formControlName="uf" name="uf" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="bairro" style="background-color: #FDFF8C; color: black;">Bairro</label>
+            </div>
+            <div class="input-field col s11">
+                <input id="bairro" type="text" formControlName="bairro" name="bairro" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0px; margin-bottom: 0px;">
+            <div class="input-field col s1">
+                <label for="rua" style="background-color: #FDFF8C; color: black;">Rua</label>
+            </div>
+            <div class="input-field col s8">
+                <input id="rua" type="text" formControlName="rua" name="rua" />
+            </div>
+            <div class="input-field col s1">
+                <label for="numero" style="background-color: #FDFF8C; color: black;">Número</label>
+            </div>
+            <div class="input-field col s2">
+                <input id="numero" type="text" formControlName="numero" name="numero" />
+            </div>
+            <div class="input-field col s2">
+                <label for="complemento" style="background-color: #FDFF8C; color: black;">Complemento</label>
+            </div>
+            <div class="input-field col s10">
+                <input id="complemento" type="text" formControlName="complemento" name="complemento" />
+            </div>
+        </div>
+        <!-- <div class="row" style="margin-top: 50px;">
+            <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit" style="background-color: #C8C8C8; color: black;">Novo Cadastro</button>
+            </div>
+        </div> -->
+        <div class="row" style="margin-top: 50px;">
+            <!-- <div class="input-field col s5">
+                <button class="btn waves-effect waves-light" type="submit" style="background-color: #C8C8C8; color: black;" (click)="prontuarios()">Prontuários</button>
+            </div>       
+            <div class="right input-field col s1" style="margin-left: 25px;">
+                <button class="btn waves-effect waves-light" type="submit" style="background-color: #CFF4FC; color: #055160;">Fechar</button>                              
+            </div>
+            <div class="right input-field col s1" style="margin-left: 25px;">
+                <button class="btn waves-effect waves-light" type="submit" style="background-color: #FFF3CD; color: #664D03;">Editar</button>                                   
+            </div>
+            <div class="right input-field col s1" style="margin-left: 25px;">
+                <button class="btn waves-effect waves-light" type="submit" style="background-color: #F8D7DA; color: #842029;">Excluir</button>             
+            </div> -->
+            <div class="right input-field col s1" style="margin-left: 25px;">
+                <button class="btn waves-effect waves-light" type="submit"
+                    style="background-color: #D1E7DD; color: #146C43;">Salvar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<app-footer></app-footer>

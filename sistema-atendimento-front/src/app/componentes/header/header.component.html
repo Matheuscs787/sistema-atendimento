@@ -1,0 +1,50 @@
+<div class="navbar-fixed" style="z-index: 1001 !important">
+    <nav>
+        <div class="nav-wrapper grey darken-3">
+            <a id="logo" class="brand-logo" routerLink='/agenda'>Confessionário</a>
+            <a routerLink='/agenda' data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul id="opcoes" class="hide-on-med-and-down" style="padding-left: 350px;">
+                <li>
+                    <a routerLink='/agenda' class="flow-text">Agenda</a>
+                </li>
+                <li>
+                    <a routerLink='/cadastro' class="flow-text">Cadastro</a>
+                </li>
+                <li>
+                    <a routerLink='/procura' class="flow-text">Procura</a>
+                </li>                
+            </ul>    
+            <ul class="right hide-on-med-and-down">
+                <li style="padding-left: 150px;">
+                    <input type="text" id="input-text" class="white" placeholder="  Buscar" style="height: 34px; margin-top: 17px; border-radius: 10px;" [(ngModel)]="buscarValue">                
+                </li>
+                <li style="padding-left: 3px; padding-right: 15px; border-radius: 10px;">
+                    <button class="btn transparent-button" type="submit" (click)="buscar()">Buscar</button>
+                </li>
+            </ul>        
+        </div>
+    </nav>
+
+    <ul class="sidenav grey darken-3" id="mobile-demo" #mobile>
+        <div class="row">
+            <div id="logo-mobile" class="col s8 offset-s2">
+                <a routerLink='/agenda' id="logo-text" class="brand-logo">Confessionário</a>
+            </div>    
+        </div>
+        <li>
+            <a routerLink='/agenda' class="flow-text" style="color:white;">Agenda</a>
+        </li>
+        <li>
+            <a routerLink='/cadastro' class="flow-text" style="color:white;">Cadastro</a>
+        </li>
+        <li>
+            <a routerLink='/procura' class="flow-text" style="color:white;">Procura</a>
+        </li>
+        <li style="padding-left: 30px; padding-right: 20px; border-radius: 10px;">
+            <input type="text" class="white" placeholder="  Buscar" style="height: 34px; margin-top: 17px;" [(ngModel)]="buscarValue">
+            <button class="btn transparent-button" type="submit" (click)="buscar()">Buscar</button>
+        </li>
+    </ul>
+</div>

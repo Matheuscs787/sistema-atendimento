@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="container">
+    <h5 style="text-align: center; margin-top: 30px; margin-bottom: 50px; font-weight: bold;">Busca de atendimento por
+        data de atendimento, CPF ou nome</h5>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="data" style="background-color: #FDFF8C; color: black;">Data</label>
+        </div>
+        <div class="input-field col s4">
+            <input id="data" type="date" [(ngModel)]="data" name="data" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="cpf" style="background-color: #FDFF8C; color: black;">CPF</label>
+        </div>
+        <div class="input-field col s4">
+            <input id="cpf" type="text" [(ngModel)]="cpf" name="cpf" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s1">
+            <label for="nome" style="background-color: #FDFF8C; color: black;">Nome</label>
+        </div>
+        <div class="input-field col s11">
+            <input id="nome" type="text" [(ngModel)]="nome" name="nome" />
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col s12 m12 right-align">
+            <app-busca-info [cpf]="cpf" [nome]="nome" [data]="data" (dadosFiltrados)="dadosFiltrados = $event"></app-busca-info>
+            <button class="btn waves-effect waves-light" type="submit" (click)="buscarDados()">Pesquisar</button>
+        </div>
+    </div>
+
+    <div *ngIf="exibirResultado">
+        <div class="row" style="margin-top: 50px;">
+            <div id="agendamento" class="input-field col s12 m12">
+                <p style="text-align: center;">RESULTADO</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="striped bordered-table">
+              <tbody>
+                <ng-container *ngIf="dadosFiltrados.length > 0; else noData">
+                  <tr *ngFor="let linha of dadosFiltrados">
+                    <td class="highlighted-row">NOME: </td>
+                    <td class="row-nome">{{ linha.nome }}</td>
+                    <td class="highlighted-row">CPF: </td>
+                    <td>{{ linha.cpf }}</td>
+                  </tr>
+                </ng-container>
+                <ng-template #noData>
+                  <tr>
+                    <td colspan="4" style="text-align: center;">Nenhum dado encontrado</td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
