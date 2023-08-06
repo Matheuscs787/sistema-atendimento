@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,9 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
+
 export class CadastroComponent{
+  myForm: FormGroup;
   codigo: string = '';
-  data: string = '';
+  dataCadastro: string = '';
   nome: string = '';
   nascimento: string = '';
   cpf: string = '';
@@ -23,15 +26,36 @@ export class CadastroComponent{
   numero: string = '';
   complemento: string = '';
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private formBuilder: FormBuilder){
+    this.myForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      nascimento: ['', Validators.required],
+      cpf: ['', Validators.maxLength(11), Validators.minLength(11), Validators.required],
+      estadoCivil: ['', Validators.required],
+      telefone: ['', Validators.required],
+      telefone1: ['', Validators.required],
+      cep: ['', Validators.required],
+      cidade: ['', Validators.required],
+      uf: ['', Validators.required],
+      bairro: ['', Validators.required],
+      rua: ['', Validators.required],
+      numero: ['', Validators.required]
+    });
+  }
 
   ngAfterViewInit() {
     const selectElems = document.querySelectorAll('select');
     M.FormSelect.init(selectElems);
   }
 
+  ngOnInit() {}
+
   submitForm() {
     console.log('Formulário enviado:', this);
+  }
+
+  get formControls(){
+    return this.myForm.controls;
   }
 
   prontuarios(){
