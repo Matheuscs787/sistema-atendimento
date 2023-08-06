@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Paciente } from 'src/app/inteface/paciente.model';
+import { Paciente } from 'src/app/inteface/paciente.model'; 
 
 
 @Component({
@@ -11,8 +11,8 @@ import { Paciente } from 'src/app/inteface/paciente.model';
   styleUrls: ['./cadastro.component.css']
 })
 
-export class CadastroComponent {
-  myForm: FormGroup;
+export class CadastroComponent{
+  myForm: FormGroup; 
   paciente: Paciente = {
     id: '',
     dataCadastro: '',
@@ -29,9 +29,9 @@ export class CadastroComponent {
     rua: '',
     numero: '',
     complemento: ''
-  };
+  }; 
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient){
     this.myForm = this.formBuilder.group({
       id: [''],
       dataCadastro: [''],
@@ -60,34 +60,32 @@ export class CadastroComponent {
   }
 
   submitForm() {
-    if (this.myForm.valid) {
-      const codigo = this.myForm.get('id')?.value;
-      if (!codigo) {
-        const dataAtual = new Date();
-        const formattedDataAtual = this.formatDate(dataAtual);
-        this.myForm.get('dataCadastro')?.setValue(formattedDataAtual);
+    if(this.myForm.valid){
 
-        const paciente = this.myForm.value;
-        this.http.post<any>('http://localhost:3000/paciente', paciente).subscribe(
-          (response) => {
-            this.myForm.patchValue({ id: response.id });
-            this.myForm.patchValue({ dataCadastro: response.dataCadastro });
-          },
-          (error) => {
-            alert('Erro ao salvar paciente:' + JSON.stringify(error));
-          }
-        );
-      } else {
-        alert('Formulário inválido. Verifique os campos.');
-      }
+      const dataAtual = new Date();
+      const formattedDataAtual = this.formatDate(dataAtual);
+      this.myForm.get('dataCadastro')?.setValue(formattedDataAtual);
+
+      const paciente = this.myForm.value;
+      this.http.post<any>('http://localhost:3000/paciente', paciente).subscribe(
+        (response) => {
+          this.myForm.patchValue({id:response.id});   
+          this.myForm.patchValue({dataCadastro:response.dataCadastro});
+        },
+        (error) => {
+          alert('Erro ao salvar paciente:' + JSON.stringify(error));        
+        }
+      );
+    } else {
+      alert('Formulário inválido. Verifique os campos.');
     }
   }
 
-  get formControls() {
+  get formControls(){
     return this.myForm.controls;
   }
 
-  prontuarios() {
+  prontuarios(){
     if (this.paciente.id !== '') {
       this.router.navigate(['/prontuarios', this.paciente.id]);
     } else {
