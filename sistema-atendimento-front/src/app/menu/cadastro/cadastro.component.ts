@@ -80,6 +80,8 @@ export class CadastroComponent {
       } else {
         alert('Formulário inválido. Verifique os campos.');
       }
+    } else {
+      alert('Formulário inválido. Verifique os campos.');
     }
   }
 
