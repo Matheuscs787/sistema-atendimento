@@ -4,7 +4,8 @@ Sendo que terá o cadastro de pessoas atendidas, usuários e de atendimentos.
 
 
 Link para visualização do protótipo: https://www.figma.com/file/xK1jGU4WlbkQ6A20ISOSCY/Software-de-atendimento?type=design&node-id=2%3A4&mode=design&t=a8PChY05YhVQMGby-1
-Link de acesso: https://matheuscs787.github.io/sistema-atendimento/sistema-atendimento/login
+<br>Link de acesso: https://matheuscs787.github.io/sistema-atendimento/sistema-atendimento/login
+<br>Gravação da apresentação: https://www.loom.com/share/f587dc7b94b64f808f6292328ad58c59?sid=c14571a6-3744-48bb-a642-a4404c4f7cca
 
 ## Checklist
 
@@ -20,7 +21,7 @@ Link de acesso: https://matheuscs787.github.io/sistema-atendimento/sistema-atend
 - [x] Passar dados entre componentes que representam diferentes telas via parâmetros de rotas.
 - [ ] Validar campos do formulário com REGEX e apresentar os erros.
 - [ ] Desabilitar o botão de submit enquanto o formulário está inválido.
-- [ ] Fazer requisições a API com tratamento da resposta com Promises ou Observables.
+- [x] Fazer requisições a API com tratamento da resposta com Promises ou Observables.
 - [x] Cadastrar uma entidade no JSON Server.
 - [x] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [x] Usar a diretiva ngIf
